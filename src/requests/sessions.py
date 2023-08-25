@@ -508,6 +508,7 @@ class Session(SessionRedirectMixin):
         files=None,
         auth=None,
         timeout=None,
+        retries=None,
         allow_redirects=True,
         proxies=None,
         hooks=None,
@@ -583,6 +584,7 @@ class Session(SessionRedirectMixin):
         # Send the request.
         send_kwargs = {
             "timeout": timeout,
+            "retries": retries,
             "allow_redirects": allow_redirects,
         }
         send_kwargs.update(settings)

@@ -431,7 +431,7 @@ class HTTPAdapter(BaseAdapter):
         return headers
 
     def send(
-        self, request, stream=False, timeout=None, verify=True, cert=None, proxies=None
+        self, request, stream=False, timeout=None, retries=None, verify=True, cert=None, proxies=None
     ):
         """Sends PreparedRequest object. Returns Response object.
 
@@ -480,6 +480,9 @@ class HTTPAdapter(BaseAdapter):
             pass
         else:
             timeout = TimeoutSauce(connect=timeout, read=timeout)
+
+        if isinstance(retries, int) or isinstance(retries, Retry):
+            self.max_retries = Retry.from_int(retries)
 
         try:
             resp = conn.urlopen(
