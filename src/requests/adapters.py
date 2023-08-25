@@ -441,6 +441,10 @@ class HTTPAdapter(BaseAdapter):
             data before giving up, as a float, or a :ref:`(connect timeout,
             read timeout) <timeouts>` tuple.
         :type timeout: float or tuple or urllib3 Timeout object
+        :param retries: (optional) Number of times to retry a failed connection.
+            If you want fine-grained control over the retry process you can pass
+            a urllib3.util.retry.Retry object instead.
+        :type retries: int or urllib3.util.retry.Retry
         :param verify: (optional) Either a boolean, in which case it controls whether
             we verify the server's TLS certificate, or a string, in which case it
             must be a path to a CA bundle to use

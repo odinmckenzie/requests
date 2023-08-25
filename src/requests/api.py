@@ -33,6 +33,10 @@ def request(method, url, **kwargs):
         before giving up, as a float, or a :ref:`(connect timeout, read
         timeout) <timeouts>` tuple.
     :type timeout: float or tuple
+    :param retries: (optional) Number of times to retry a failed connection.
+        If you want fine-grained control over the retry process you can pass
+        a urllib3.util.retry.Retry object instead.
+    :type retries: int or urllib3.util.retry.Retry
     :param allow_redirects: (optional) Boolean. Enable/disable GET/OPTIONS/POST/PUT/PATCH/DELETE/HEAD redirection. Defaults to ``True``.
     :type allow_redirects: bool
     :param proxies: (optional) Dictionary mapping protocol to the URL of the proxy.

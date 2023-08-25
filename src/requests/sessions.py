@@ -540,6 +540,10 @@ class Session(SessionRedirectMixin):
             data before giving up, as a float, or a :ref:`(connect timeout,
             read timeout) <timeouts>` tuple.
         :type timeout: float or tuple
+        :param retries: (optional) Number of times to retry a failed connection.
+            If you want fine-grained control over the retry process you can pass
+            a urllib3.util.retry.Retry object instead.
+        :type retries: int or urllib3.util.retry.Retry
         :param allow_redirects: (optional) Set to True by default.
         :type allow_redirects: bool
         :param proxies: (optional) Dictionary mapping protocol or protocol and
